@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;700&display=swap');
+
 *,
 *::before,
 *::after {
@@ -6,8 +8,11 @@
 }
 
 body {
+font-family: 'Manrope', sans-serif;
   min-height: 100vh;
-  transition: color 0.5s, background-color 0.5s;
+  transition:
+    color 0.5s,
+    background-color 0.5s;
   line-height: 1.6;
   font-size: 16px;
   text-rendering: optimizeLegibility;
