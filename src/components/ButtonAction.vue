@@ -30,21 +30,24 @@ export default defineComponent({
 
 <style scoped>
 .btn {
+    width: fit-content;
+    cursor: pointer;
     font-size: 13px;
     font-style: normal;
     font-weight: 700;
     line-height: normal;
     letter-spacing: 1px;
     text-transform: uppercase;
-    cursor: pointer;
 }
 
 .primary,
 .secondary {
     display: flex;
     justify-content: center;
+    flex-wrap: nowrap;
     align-items: center;
     padding: 15px 30px;
+    border: 1px solid #000;
 }
 
 .primary {
@@ -58,7 +61,7 @@ export default defineComponent({
 
 .secondary {
     color: #000;
-    background-color: #fff;
+    background-color: transparent;
 }
 
 .secondary:hover {
@@ -70,5 +73,12 @@ export default defineComponent({
     padding: 0;
     background-color: transparent;
     border: none;
+    display: flex;
+    align-items: center;
+    gap: 13px;
+}
+
+.tertiary:hover {
+    color: #D87D4A;
 }
 </style>

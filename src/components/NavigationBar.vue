@@ -20,7 +20,10 @@ HamburgerMenu
 
 <style scoped>
 .wrapper {
+  position: relative;
+  z-index: 99;
   background-color: #191919;
+  min-width: 100vw;
 }
 
 nav {
