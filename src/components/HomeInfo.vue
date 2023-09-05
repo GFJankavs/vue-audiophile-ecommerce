@@ -11,6 +11,11 @@
         alt="Best Gear"
         class="info__img info__img--tablet"
       />
+      <img
+        src="@assets/shared/desktop/image-best-gear.jpg"
+        alt="Best Gear"
+        class="info__img info__img--desktop"
+      />
       <div class="info__text">
         <h4 class="font__h4 info__title">Bringing you the <strong>best</strong> audio gear</h4>
         <p class="font__body info__paragraph">
@@ -63,6 +68,10 @@ export default defineComponent({
   display: none;
 }
 
+.info__img--desktop {
+  display: none;
+}
+
 @media (min-width: 768px) {
   .info__img--mobile {
     display: none;
@@ -70,6 +79,28 @@ export default defineComponent({
 
   .info__img--tablet {
     display: block;
+  }
+}
+
+@media (min-width: 1024px) {
+  .info__content {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    gap: 125px;
+  }
+
+  .info__img--tablet {
+    display: none;
+  }
+
+  .info__img--desktop {
+    display: block;
+    width: 540px;
+  }
+
+  .info__text {
+    text-align: left;
   }
 }
 </style>

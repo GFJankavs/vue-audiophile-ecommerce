@@ -34,7 +34,7 @@ export default defineComponent({
 })
 </script>
 
-<style scoped>
+<style>
 .btn {
   width: fit-content;
   cursor: pointer;

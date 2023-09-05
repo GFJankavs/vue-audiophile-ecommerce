@@ -34,4 +34,10 @@ export default defineComponent({
     gap: 10px;
   }
 }
+
+@media (min-width: 1024px) {
+  .product__grid {
+    gap: 30px;
+  }
+}
 </style>

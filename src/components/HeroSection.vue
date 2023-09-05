@@ -1,7 +1,18 @@
 <template>
   <div class="wrapper">
-    <img src="@assets/home/mobile/image-header.jpg" alt="Hero Background" class="hero__img" />
-    <div class="container">
+    <div class="container hero__container">
+      <div class="hero__img-container">
+        <img
+          src="@assets/home/mobile/image-header.jpg"
+          alt="Hero Background"
+          class="hero__img hero__img--mobile"
+        />
+        <img
+          src="@assets/home/desktop/image-hero.jpg"
+          alt="Hero Background"
+          class="hero__img hero__img--desktop"
+        />
+      </div>
       <div class="hero__flex">
         <div class="hero__content">
           <div class="hero__content-top">
@@ -35,19 +46,32 @@ export default defineComponent({
 
 <style scoped>
 .wrapper {
-  position: relative;
   background-color: #191919;
   z-index: 1;
-  min-height: 630px;
+}
+
+.hero__container {
+  position: relative;
+}
+
+.hero__img-container {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 }
 
 .hero__img {
-  position: absolute;
-  top: -100px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 100%;
-  max-width: 450px;
+  position: relative;
+  height: 100%;
+}
+
+.hero__img--desktop {
+  display: none;
 }
 
 .hero__flex {
@@ -60,6 +84,8 @@ export default defineComponent({
   padding: 128px 0;
   color: #fff;
   white-space: break-spaces;
+  height: 100%;
+  width: 100%;
 }
 
 .hero__content {
@@ -92,6 +118,49 @@ export default defineComponent({
 @media (max-width: 400px) {
   h1 {
     font-size: 48px;
+  }
+}
+
+@media (min-width: 768px) {
+  .hero___img {
+    transform: translateY(-100px);
+  }
+
+  .hero__content {
+    gap: 40px;
+  }
+
+  .hero__title-container {
+    gap: 24px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .hero__container {
+    display: grid;
+    place-items: center;
+  }
+
+  .hero__img--mobile {
+    display: none;
+  }
+
+  .hero__img--desktop {
+    display: block;
+  }
+
+  .hero__flex {
+    justify-content: flex-start;
+    padding: 128px 0 64px;
+  }
+
+  .hero__content {
+    justify-items: flex-start;
+    text-align: left;
+  }
+
+  .hero__content-top {
+    max-width: 400px;
   }
 }
 </style>

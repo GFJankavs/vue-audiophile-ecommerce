@@ -3,7 +3,16 @@
     <div class="product__grid">
       <section class="product__first">
         <div class="first__content">
-          <img src="@assets/home/mobile/image-speaker-zx9.png" alt="" class="first__img" />
+          <img
+            src="@assets/home/mobile/image-speaker-zx9.png"
+            alt=""
+            class="first__img first__img--mobile"
+          />
+          <img
+            src="@assets/home/desktop/image-speaker-zx9.png"
+            alt=""
+            class="first__img first__img--desktop"
+          />
           <div class="first__text-content">
             <h3 class="first__title">ZX9 SPEAKER</h3>
             <p class="font__body first__text">
@@ -83,6 +92,10 @@ export default defineComponent({
 
 .first__img {
   width: 172px;
+}
+
+.first__img--desktop {
+  display: none;
 }
 
 .first__text-content {
@@ -185,6 +198,49 @@ export default defineComponent({
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
+  }
+}
+
+@media (min-width: 1024px) {
+  .product__first {
+    background-position: -200px -140px;
+  }
+
+  .first__content {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    gap: 138px;
+    padding: 96px 0 0 117px;
+  }
+
+  .first__img {
+    width: 410px;
+  }
+
+  .first__img--mobile {
+    display: none;
+  }
+
+  .first__img--desktop {
+    display: block;
+    transform: translateY(26px);
+  }
+
+  .first__text-content {
+    width: 100%;
+    justify-items: flex-start;
+    align-self: flex-start;
+    padding-top: 47px;
+  }
+
+  .first__title,
+  .first__text {
+    text-align: left;
+  }
+
+  .product__second {
+    background-image: url('@assets/home/desktop/image-speaker-zx7.jpg');
   }
 }
 </style>

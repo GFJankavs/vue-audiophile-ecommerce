@@ -87,6 +87,7 @@ export default defineComponent({
   background-color: #f1f1f1;
   border-radius: 8px;
   width: 100%;
+  cursor: pointer;
 }
 
 .headphones .product__bg {
@@ -131,6 +132,10 @@ export default defineComponent({
 
 .speakers img.img {
   width: 150px;
+}
+
+.link__hover {
+  color: #d87d4a;
 }
 
 @media (min-width: 768px) {
