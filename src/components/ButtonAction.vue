@@ -9,14 +9,15 @@
   >
     {{ text }}
   </button>
-  <a v-else-if="variant === 'tertiary'" class="btn tertiary">
+  <RouterLink v-else-if="variant === 'tertiary'" class="btn tertiary" :to="path">
     <span>{{ text }}</span>
     <img src="@/assets/shared/desktop/icon-arrow-right.svg" alt="Arrow right" />
-  </a>
+  </RouterLink>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue'
+import { RouterLink } from 'vue-router'
 
 export default defineComponent({
   name: 'ButtonAction',
@@ -29,7 +30,15 @@ export default defineComponent({
       type: String as () => 'primary' | 'secondary' | 'tertiary',
       required: false,
       default: 'primary'
+    },
+    path: {
+      type: String,
+      required: false,
+      default: '/'
     }
+  },
+  components: {
+    RouterLink
   }
 })
 </script>
@@ -77,6 +86,8 @@ export default defineComponent({
 }
 
 .tertiary {
+  color: inherit;
+  text-decoration: none;
   padding: 0;
   background-color: transparent;
   border: none;

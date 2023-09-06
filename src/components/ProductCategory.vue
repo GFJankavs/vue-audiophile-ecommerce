@@ -11,7 +11,7 @@
       </div>
       <div class="product__bottom">
         <span class="font__body">{{ text.toUpperCase() }}</span>
-        <ButtonAction text="shop" variant="tertiary" />
+        <ButtonAction text="shop" variant="tertiary" :path="`/${text}`" />
       </div>
     </div>
     <div class="product__bg" />
