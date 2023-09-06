@@ -1,16 +1,25 @@
 <script setup lang="ts">
-import { ref, onMounted } from 'vue'
+import { ref } from 'vue'
 import HamburgerMenu from './HamburgerMenu.vue'
-import router from '@/router'
 
-const links = ref<{ name: string; path: string }[]>([])
-
-onMounted(() => {
-  links.value = router.getRoutes().map((route) => ({
-    name: route.name?.toString() ?? '',
-    path: route.path
-  }))
-})
+const links = ref<{ name: string; path: string }[]>([
+  {
+    name: 'Home',
+    path: '/'
+  },
+  {
+    name: 'Headphones',
+    path: '/headphones'
+  },
+  {
+    name: 'Speakers',
+    path: '/speakers'
+  },
+  {
+    name: 'Earphones',
+    path: '/earphones'
+  }
+])
 </script>
 
 <template>
@@ -40,7 +49,7 @@ onMounted(() => {
 .wrapper {
   position: relative;
   z-index: 99;
-  background-color: #191919;
+  background-color: #000;
   min-width: 100vw;
 }
 

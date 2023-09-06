@@ -16,6 +16,11 @@ export default defineComponent({
     NavigationBar,
     FooterSection,
     RouterView
+  },
+  watch: {
+    $route() {
+      window.scrollTo(0, 0)
+    }
   }
 })
 </script>

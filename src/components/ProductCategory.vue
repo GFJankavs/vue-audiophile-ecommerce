@@ -1,7 +1,7 @@
 <template>
-  <div class="product__wrapper" :class="imgClass">
-    <div class="product">
-      <div class="product__img-container">
+  <div class="category__wrapper" :class="imgClass">
+    <div class="category">
+      <div class="category__img-container">
         <img
           :src="getImgUrl().href"
           :alt="text.slice(0, 1).toUpperCase() + text.slice(1)"
@@ -9,12 +9,12 @@
           :class="{ earphones: isEarphones(text) }"
         />
       </div>
-      <div class="product__bottom">
+      <div class="category__bottom">
         <span class="font__body">{{ text.toUpperCase() }}</span>
         <ButtonAction text="shop" variant="tertiary" :path="`/${text}`" />
       </div>
     </div>
-    <div class="product__bg" />
+    <div class="category__bg" />
   </div>
 </template>
 <script lang="ts">
@@ -63,12 +63,12 @@ export default defineComponent({
 </script>
 
 <style scoped>
-.product__wrapper {
+.category__wrapper {
   position: relative;
   width: 100%;
 }
 
-.product {
+.category {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -77,7 +77,7 @@ export default defineComponent({
   width: 100%;
 }
 
-.product__bg {
+.category__bg {
   position: absolute;
   top: 0;
   left: 0;
@@ -90,37 +90,37 @@ export default defineComponent({
   cursor: pointer;
 }
 
-.headphones .product__bg {
+.headphones .category__bg {
   transform: translateY(54px);
 }
 
-.speakers .product__bg {
+.speakers .category__bg {
   transform: translateY(54px);
 }
 
-.earphones .product__bg {
+.earphones .category__bg {
   transform: translateY(40px);
 }
 
-.headphones .product__bottom {
+.headphones .category__bottom {
   transform: translateY(-30%);
 }
 
-.speakers .product__bottom {
+.speakers .category__bottom {
   transform: translateY(-23%);
 }
 
-.earphones .product__bottom {
+.earphones .category__bottom {
   transform: translateY(-30%);
 }
 
-.product__img-container {
+.category__img-container {
   position: relative;
   display: grid;
   justify-items: center;
 }
 
-.product__bottom {
+.category__bottom {
   display: grid;
   gap: 17px;
   justify-items: center;
@@ -139,11 +139,11 @@ export default defineComponent({
 }
 
 @media (min-width: 768px) {
-  .earphones .product__bottom {
+  .earphones .category__bottom {
     transform: translateY(-7%);
   }
 
-  .earphones .product__bg {
+  .earphones .category__bg {
     transform: translateY(53px);
   }
 

@@ -115,7 +115,7 @@ export default defineComponent({
   letter-spacing: 1.286px;
   text-transform: uppercase;
   white-space: pre-wrap;
-  word-spacing: 9999999px;
+  word-break: keep-all;
 }
 
 .first__text {

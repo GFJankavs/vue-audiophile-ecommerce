@@ -98,13 +98,26 @@ export default defineComponent({
   components: {
     RouterLink
   },
-  computed: {
-    links() {
-      const links = router.getRoutes()
-      return links.map((link) => ({
-        name: link.name,
-        path: link.path
-      }))
+  data() {
+    return {
+      links: [
+        {
+          name: 'Home',
+          path: '/'
+        },
+        {
+          name: 'Headphones',
+          path: '/headphones'
+        },
+        {
+          name: 'Speakers',
+          path: '/speakers'
+        },
+        {
+          name: 'Earphones',
+          path: '/earphones'
+        }
+      ]
     }
   }
 })

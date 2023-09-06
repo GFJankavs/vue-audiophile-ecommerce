@@ -63,12 +63,12 @@ export default defineComponent({
   flex-wrap: nowrap;
   align-items: center;
   padding: 15px 30px;
-  border: 1px solid #000;
 }
 
 .primary {
   background-color: #d87d4a;
   color: #fff;
+  border: none;
 }
 
 .primary:hover {
@@ -78,6 +78,7 @@ export default defineComponent({
 .secondary {
   color: #000;
   background-color: transparent;
+  border: 1px solid #000;
 }
 
 .secondary:hover {
