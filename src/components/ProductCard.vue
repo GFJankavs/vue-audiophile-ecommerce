@@ -25,7 +25,7 @@
           {{ product.description }}
         </p>
       </div>
-      <ButtonAction text="See Product" variant="primary" />
+      <ButtonAction text="See Product" variant="primary" :path="`/${category}/${product.slug}`" />
     </div>
   </div>
 </template>
@@ -41,7 +41,8 @@ export default defineComponent({
     product: {
       type: Object as PropType<AudiophileData>,
       required: true
-    }
+    },
+    category: String
   },
   components: {
     ButtonAction

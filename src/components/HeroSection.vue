@@ -25,7 +25,11 @@
               passionate music enthusiast.
             </p>
           </div>
-          <ButtonAction text="See Product" type="primary" />
+          <ButtonAction
+            text="See Product"
+            type="primary"
+            path="/headphones/xx99-mark-two-headphones"
+          />
         </div>
       </div>
     </div>

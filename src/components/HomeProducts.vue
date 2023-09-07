@@ -19,13 +19,13 @@
               Upgrade to premium speakers that are phenomenally built to deliver truly remarkable
               sound.
             </p>
-            <ButtonAction text="See Product" variant="secondary" />
+            <ButtonAction text="See Product" variant="secondary" path="/speakers/zx9-speaker" />
           </div>
         </div>
       </section>
       <section class="product__second">
         <h4 class="font__h4">ZX7 SPEAKER</h4>
-        <ButtonAction text="See Product" variant="secondary" />
+        <ButtonAction text="See Product" variant="secondary" path="/speakers/zx7-speaker" />
       </section>
       <section class="product__third">
         <div class="third__img-container">
@@ -42,7 +42,7 @@
         </div>
         <div class="third__content">
           <h4 class="font__h4">YX1 EARPHONES</h4>
-          <ButtonAction text="See Product" variant="secondary" />
+          <ButtonAction text="See Product" variant="secondary" path="/earphones/yx1-earphones" />
         </div>
       </section>
     </div>

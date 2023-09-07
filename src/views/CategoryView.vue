@@ -5,17 +5,26 @@
         <h2 class="font__h2 title">{{ title.toUpperCase() }}</h2>
       </div>
     </div>
-    <section>
-      <div class="container">
-        <div class="category__grid">
+    <div class="category__grid">
+      <section>
+        <div class="container">
           <div class="product__grid">
-            <ProductCard v-for="product of products" :key="product.name" :product="product" />
+            <ProductCard
+              v-for="product of products"
+              :key="product.name"
+              :product="product"
+              :category="$route.params.category.toString()"
+            />
           </div>
-          <ProductCategories />
-          <HomepageInfo />
         </div>
-      </div>
-    </section>
+      </section>
+      <section>
+        <ProductCategories />
+      </section>
+      <section>
+        <HomepageInfo />
+      </section>
+    </div>
   </main>
 </template>
 
@@ -56,10 +65,10 @@ export default defineComponent({
   },
   async mounted() {
     await this.prepareProductData(this.$route.params.category)
+  },
+  async updated() {
+    await this.prepareProductData(this.$route.params.category)
   }
-  // async beforeRouteUpdate(to) {
-  //   await this.prepareProductData(to.params.category);
-  // }
 })
 </script>
 

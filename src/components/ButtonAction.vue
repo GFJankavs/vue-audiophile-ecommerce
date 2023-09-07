@@ -1,6 +1,6 @@
 <template>
   <button
-    v-if="variant === 'primary' || variant === 'secondary'"
+    v-if="!path && (variant === 'primary' || variant === 'secondary')"
     class="btn"
     :class="{
       primary: variant === 'primary',
@@ -9,7 +9,18 @@
   >
     {{ text }}
   </button>
-  <RouterLink v-else-if="variant === 'tertiary'" class="btn tertiary" :to="path">
+  <RouterLink
+    v-if="path && (variant === 'primary' || variant === 'secondary')"
+    :to="path"
+    class="btn btn__link"
+    :class="{
+      primary: variant === 'primary',
+      secondary: variant === 'secondary'
+    }"
+  >
+    {{ text }}
+  </RouterLink>
+  <RouterLink v-else-if="variant === 'tertiary'" class="btn tertiary" :to="path ?? ''">
     <span>{{ text }}</span>
     <img src="@/assets/shared/desktop/icon-arrow-right.svg" alt="Arrow right" />
   </RouterLink>
@@ -33,8 +44,7 @@ export default defineComponent({
     },
     path: {
       type: String,
-      required: false,
-      default: '/'
+      required: false
     }
   },
   components: {
@@ -53,7 +63,11 @@ export default defineComponent({
   line-height: normal;
   letter-spacing: 1px;
   text-transform: uppercase;
-  height: min-content;
+  height: fit-content;
+}
+
+.btn__link {
+  text-decoration: none;
 }
 
 .primary,
