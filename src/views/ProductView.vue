@@ -25,12 +25,10 @@
               <h6 class="font__h6 detail__price">$ {{ numberWithCommas(product.price) }}</h6>
             </div>
             <div class="detail__cart-container">
-              <div class="cart__add-wrapper">
-                <button class="btn__add font__subtitle" @click="decreaseAmount">-</button>
-                <span>{{ amount }}</span>
-                <button class="btn__add font__subtitle" @click="increaseAmount">+</button>
+              <div class="amount__container">
+                <AmountIncrement :value="amount" />
               </div>
-              <ButtonAction text="Add to cart" class="btn__cart" />
+              <ButtonAction text="Add to cart" />
             </div>
           </div>
         </div>
@@ -99,6 +97,7 @@
 </template>
 
 <script lang="ts">
+import AmountIncrement from '@/components/AmountIncrement.vue'
 import ButtonAction from '@/components/ButtonAction.vue'
 import HomepageInfo from '@/components/HomepageInfo.vue'
 import ProductCategories from '@/components/ProductCategories.vue'
@@ -108,12 +107,13 @@ import type { AudiophileData } from '@/types'
 import { defineComponent } from 'vue'
 
 export default defineComponent({
-  name: 'HeadphonesView',
+  name: 'ProductView',
   components: {
     ProductCategories,
     HomepageInfo,
     ButtonAction,
-    ProductGallery
+    ProductGallery,
+    AmountIncrement
   },
   data() {
     return {
@@ -215,36 +215,6 @@ export default defineComponent({
   height: 46px;
 }
 
-.cart__add-wrapper {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 120px;
-  background: #f1f1f1;
-  height: 100%;
-}
-
-.btn__cart {
-  height: 100%;
-}
-
-.btn__add {
-  all: unset;
-  padding: 15px;
-  opacity: 0.25;
-  cursor: pointer;
-  user-select: none;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  -khtml-user-select: none;
-  height: 100%;
-}
-
-.btn__add:hover {
-  opacity: 1;
-}
-
 .detail__features {
   display: grid;
   gap: 24px;
@@ -296,6 +266,11 @@ export default defineComponent({
 .item__content {
   display: grid;
   gap: 32px;
+}
+
+.amount__container {
+  width: 120px;
+  height: 46px;
 }
 
 @media (min-width: 768px) {

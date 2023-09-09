@@ -1,7 +1,21 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import HamburgerMenu from './HamburgerMenu.vue'
+import InfoModalWindow from './modal/cart/InfoModalWindow.vue'
+import useModalStore from '@/stores/useModalStore'
 
+const store = useModalStore()
+
+const openInfoModal = () => {
+  store.openModal({
+    component: InfoModalWindow,
+    props: {
+      title: 'Info',
+      text: 'This is a modal window!'
+    },
+    isOpen: true
+  })
+}
 const links = ref<{ name: string; path: string }[]>([
   {
     name: 'Home',
@@ -37,7 +51,7 @@ const links = ref<{ name: string; path: string }[]>([
             >{{ link.name }}</RouterLink
           >
         </ul>
-        <button>
+        <button @click="openInfoModal">
           <img src="@assets/icon-cart.svg" alt="Cart" />
         </button>
       </nav>
@@ -58,7 +72,7 @@ nav {
   align-items: center;
   justify-content: space-between;
   padding: 32px 0;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.104);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.4);
 }
 
 nav button {

@@ -55,7 +55,6 @@ export default defineComponent({
       const filteredData = response.filter((item: AudiophileData) => item.category === category)
       this.title = category
       this.products = filteredData
-      console.log(filteredData)
     }
   },
   watch: {
@@ -64,9 +63,6 @@ export default defineComponent({
     }
   },
   async mounted() {
-    await this.prepareProductData(this.$route.params.category)
-  },
-  async updated() {
     await this.prepareProductData(this.$route.params.category)
   }
 })

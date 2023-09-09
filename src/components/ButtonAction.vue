@@ -4,7 +4,8 @@
     class="btn"
     :class="{
       primary: variant === 'primary',
-      secondary: variant === 'secondary'
+      secondary: variant === 'secondary',
+      btn__full: fullWidth
     }"
   >
     {{ text }}
@@ -45,6 +46,11 @@ export default defineComponent({
     path: {
       type: String,
       required: false
+    },
+    fullWidth: {
+      type: Boolean,
+      required: false,
+      default: false
     }
   },
   components: {
@@ -64,6 +70,10 @@ export default defineComponent({
   letter-spacing: 1px;
   text-transform: uppercase;
   height: fit-content;
+}
+
+.btn__full {
+  width: 100%;
 }
 
 .btn__link {

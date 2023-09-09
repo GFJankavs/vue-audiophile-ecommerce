@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
+import useModalStore from '@/stores/useModalStore'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -33,6 +34,20 @@ const router = createRouter({
     //   component: () => import('/src/views/EarphonesView.vue')
     // }
   ]
+})
+
+router.beforeEach((to, from, next) => {
+  const store = useModalStore()
+
+  console.log(from)
+
+  const modal = document.querySelector('.modal-wrapper')
+
+  if (modal) {
+    store.closeModal()
+  }
+
+  next()
 })
 
 export default router
