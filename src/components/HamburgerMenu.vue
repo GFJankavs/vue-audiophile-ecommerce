@@ -4,15 +4,29 @@
     <label class="menu-button-container" for="menu-toggle">
       <div class="menu-button"></div>
     </label>
-    <ul class="menu">
+    <div class="body__overlay" />
+    <!-- <ul class="menu">
       <li>One</li>
       <li>Two</li>
       <li>Three</li>
       <li>Four</li>
       <li>Five</li>
-    </ul>
+    </ul> -->
   </section>
 </template>
+
+<script lang="ts" setup>
+import { onBeforeRouteLeave } from 'vue-router';
+import ProductCategories from './ProductCategories.vue';
+
+onBeforeRouteLeave(() => {
+  const menuToggle = document.getElementById('menu-toggle') as HTMLInputElement;
+  if (menuToggle.checked) {
+    menuToggle.checked = false;
+  }
+});
+
+</script>
 
 <style scoped>
 h2 {
@@ -39,13 +53,14 @@ body {
   width: 100%;
   justify-content: center;
   align-items: center;
-  display: flex;
-  list-style-type: none;
+  display: none;
   margin: 89px 0 0;
   padding: 0;
+  background-color: #fff;
+  border-radius: 0 0 8px 8px;
 }
 
-.menu > li {
+.menu>li {
   display: none;
   justify-content: center;
   margin: 0;
@@ -90,21 +105,25 @@ body {
   margin-top: 8px;
 }
 
-#menu-toggle:checked + .menu-button-container .menu-button::before {
+#menu-toggle:checked+.menu-button-container .menu-button::before {
   margin-top: 0px;
   transform: rotate(405deg);
 }
 
-#menu-toggle:checked + .menu-button-container .menu-button {
+#menu-toggle:checked+.menu-button-container .menu-button {
   background: rgba(255, 255, 255, 0);
 }
 
-#menu-toggle:checked + .menu-button-container .menu-button::after {
+#menu-toggle:checked+.menu-button-container .menu-button::after {
   margin-top: 0px;
   transform: rotate(-405deg);
 }
 
-#menu-toggle ~ .menu li {
+#menu-toggle:checked~.menu {
+  display: flex;
+}
+
+#menu-toggle~.menu li {
   height: 0;
   margin: 0;
   padding: 0;
@@ -112,7 +131,7 @@ body {
   transition: height 400ms cubic-bezier(0.23, 1, 0.32, 1);
 }
 
-#menu-toggle:checked ~ .menu li {
+#menu-toggle:checked~.menu li {
   display: flex;
   height: 2.5em;
   padding: 0.5em;
@@ -120,10 +139,22 @@ body {
   transition: height 400ms cubic-bezier(0.23, 1, 0.32, 1);
 }
 
-.menu > li:not(:last-child) {
+.menu>li:not(:last-child) {
   border-bottom: 1px solid #444;
 }
 
-@media (max-width: 700px) {
+.body__overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #000;
+}
+
+@media (min-width: 768px) {
+  .menu {
+    min-height: 340px;
+  }
 }
 </style>

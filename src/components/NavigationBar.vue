@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import HamburgerMenu from './HamburgerMenu.vue'
+import ModalHamburger from './modal/hamburger/ModalHamburger.vue'
 import InfoModalWindow from './modal/cart/InfoModalWindow.vue'
 import useModalStore from '@/stores/useModalStore'
 
@@ -9,6 +9,13 @@ const store = useModalStore()
 const openInfoModal = () => {
   store.openModal({
     component: InfoModalWindow,
+    isOpen: true
+  })
+}
+
+const openHamburgerMenu = () => {
+  store.openModal({
+    component: ModalHamburger,
     isOpen: true
   })
 }
@@ -36,7 +43,14 @@ const links = ref<{ name: string; path: string }[]>([
   <div class="wrapper">
     <div class="container">
       <nav>
-        <HamburgerMenu class="hamburger" />
+        <button class="btn__hamburger" @click="openHamburgerMenu">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="15" viewBox="0 0 16 15" fill="none">
+            <rect width="16" height="3" fill="white" />
+            <rect y="6" width="16" height="3" fill="white" />
+            <rect y="12" width="16" height="3" fill="white" />
+          </svg>
+        </button>
+        <!-- <HamburgerMenu class="hamburger" /> -->
         <img src="@assets/audiophile_logo.svg" alt="Logo" />
         <ul class="nav__links">
           <RouterLink v-for="link of links" :key="link.name" :to="link.path" class="font__subtitle nav__link">{{ link.name
@@ -92,7 +106,7 @@ nav button {
     justify-content: space-between;
   }
 
-  .hamburger {
+  .btn__hamburger {
     display: none;
   }
 
