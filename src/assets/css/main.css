@@ -1,5 +1,8 @@
 @import './base.css';
 @import './fonts.css';
+@import "vue-toastification/dist/index.css";
+@import "./toast.css";
+
 
 .container {
   width: 100%;

@@ -1,7 +1,17 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import HamburgerMenu from './HamburgerMenu.vue'
+import InfoModalWindow from './modal/cart/InfoModalWindow.vue'
+import useModalStore from '@/stores/useModalStore'
 
+const store = useModalStore()
+
+const openInfoModal = () => {
+  store.openModal({
+    component: InfoModalWindow,
+    isOpen: true
+  })
+}
 const links = ref<{ name: string; path: string }[]>([
   {
     name: 'Home',
@@ -29,15 +39,10 @@ const links = ref<{ name: string; path: string }[]>([
         <HamburgerMenu class="hamburger" />
         <img src="@assets/audiophile_logo.svg" alt="Logo" />
         <ul class="nav__links">
-          <RouterLink
-            v-for="link of links"
-            :key="link.name"
-            :to="link.path"
-            class="font__subtitle nav__link"
-            >{{ link.name }}</RouterLink
-          >
+          <RouterLink v-for="link of links" :key="link.name" :to="link.path" class="font__subtitle nav__link">{{ link.name
+          }}</RouterLink>
         </ul>
-        <button>
+        <button @click="openInfoModal">
           <img src="@assets/icon-cart.svg" alt="Cart" />
         </button>
       </nav>
@@ -58,7 +63,7 @@ nav {
   align-items: center;
   justify-content: space-between;
   padding: 32px 0;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.104);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.4);
 }
 
 nav button {

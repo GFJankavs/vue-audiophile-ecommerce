@@ -1,23 +1,15 @@
 <template>
-  <button
-    v-if="!path && (variant === 'primary' || variant === 'secondary')"
-    class="btn"
-    :class="{
-      primary: variant === 'primary',
-      secondary: variant === 'secondary'
-    }"
-  >
+  <button v-if="!path && (variant === 'primary' || variant === 'secondary')" class="btn" :class="{
+    primary: variant === 'primary',
+    secondary: variant === 'secondary',
+    btn__full: fullWidth
+  }" @click="() => onClick()">
     {{ text }}
   </button>
-  <RouterLink
-    v-if="path && (variant === 'primary' || variant === 'secondary')"
-    :to="path"
-    class="btn btn__link"
-    :class="{
-      primary: variant === 'primary',
-      secondary: variant === 'secondary'
-    }"
-  >
+  <RouterLink v-if="path && (variant === 'primary' || variant === 'secondary')" :to="path" class="btn btn__link" :class="{
+    primary: variant === 'primary',
+    secondary: variant === 'secondary'
+  }">
     {{ text }}
   </RouterLink>
   <RouterLink v-else-if="variant === 'tertiary'" class="btn tertiary" :to="path ?? ''">
@@ -45,11 +37,23 @@ export default defineComponent({
     path: {
       type: String,
       required: false
+    },
+    fullWidth: {
+      type: Boolean,
+      required: false,
+      default: false
     }
   },
   components: {
     RouterLink
-  }
+  },
+  methods: {
+    onClick() {
+      console.log('Clicked');
+      this.$emit('click:btn');
+    }
+  },
+  emits: ['click:btn']
 })
 </script>
 
@@ -64,6 +68,10 @@ export default defineComponent({
   letter-spacing: 1px;
   text-transform: uppercase;
   height: fit-content;
+}
+
+.btn__full {
+  width: 100%;
 }
 
 .btn__link {

@@ -5,11 +5,7 @@
       <div class="detail">
         <div class="detail__info">
           <picture>
-            <source
-              :srcset="product.image.desktop"
-              media="(min-width: 1024px)"
-              class="detail__img"
-            />
+            <source :srcset="product.image.desktop" media="(min-width: 1024px)" class="detail__img" />
             <source :srcset="product.image.tablet" media="(min-width: 768px)" class="detail__img" />
             <img :src="product.image.mobile" :alt="product.name" class="detail__img" />
           </picture>
@@ -25,12 +21,10 @@
               <h6 class="font__h6 detail__price">$ {{ numberWithCommas(product.price) }}</h6>
             </div>
             <div class="detail__cart-container">
-              <div class="cart__add-wrapper">
-                <button class="btn__add font__subtitle" @click="decreaseAmount">-</button>
-                <span>{{ amount }}</span>
-                <button class="btn__add font__subtitle" @click="increaseAmount">+</button>
+              <div class="amount__container">
+                <AmountIncrement :value="amount" @update:value="updateAmount" />
               </div>
-              <ButtonAction text="Add to cart" class="btn__cart" />
+              <ButtonAction text="Add to cart" @click:btn="onAddToCart" />
             </div>
           </div>
         </div>
@@ -38,11 +32,7 @@
           <div class="detail__features">
             <h5 class="font__h5">Features</h5>
             <div class="features__paragraphs">
-              <p
-                v-for="paragraph of featuresParagraphs"
-                :key="paragraph"
-                class="font__body detail__description"
-              >
+              <p v-for="paragraph of featuresParagraphs" :key="paragraph" class="font__body detail__description">
                 {{ paragraph }}
               </p>
             </div>
@@ -68,24 +58,13 @@
             <div v-for="item of product.others" :key="item.slug">
               <div class="item__grid">
                 <picture>
-                  <source
-                    :srcset="item.image.desktop"
-                    media="(min-width: 1024px)"
-                    class="item__img"
-                  />
-                  <source
-                    :srcset="item.image.tablet"
-                    media="(min-width: 768px)"
-                    class="item__img"
-                  />
+                  <source :srcset="item.image.desktop" media="(min-width: 1024px)" class="item__img" />
+                  <source :srcset="item.image.tablet" media="(min-width: 768px)" class="item__img" />
                   <img :src="item.image.mobile" :alt="item.name" class="item__img" />
                 </picture>
                 <div class="item__content">
                   <h5 class="font__h5">{{ item.name }}</h5>
-                  <ButtonAction
-                    text="See Product"
-                    :path="`/${$route.params.category.toString()}/${item.slug}`"
-                  />
+                  <ButtonAction text="See Product" :path="`/${$route.params.category.toString()}/${item.slug}`" />
                 </div>
               </div>
             </div>
@@ -99,21 +78,33 @@
 </template>
 
 <script lang="ts">
+import AmountIncrement from '@/components/AmountIncrement.vue'
 import ButtonAction from '@/components/ButtonAction.vue'
 import HomepageInfo from '@/components/HomepageInfo.vue'
 import ProductCategories from '@/components/ProductCategories.vue'
 import ProductGallery from '@/components/ProductGallery.vue'
+import CartAddToast from '@/components/modal/cart/CartAddToast.vue'
 import router from '@/router'
+import { useCartStore } from '@/stores/useCartStore'
 import type { AudiophileData } from '@/types'
 import { defineComponent } from 'vue'
+import { useToast } from 'vue-toastification'
+
+const store = useCartStore();
 
 export default defineComponent({
-  name: 'HeadphonesView',
+  name: 'ProductView',
+  setup() {
+    const toast = useToast();
+
+    return { toast }
+  },
   components: {
     ProductCategories,
     HomepageInfo,
     ButtonAction,
-    ProductGallery
+    ProductGallery,
+    AmountIncrement
   },
   data() {
     return {
@@ -130,16 +121,36 @@ export default defineComponent({
       const response = await fetch('/src/data/data.json').then((res) => res.json())
       const product = response.find((product: AudiophileData) => product.slug === productParam)
       this.product = product
-      console.log(product)
     },
     numberWithCommas(x: number) {
       return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')
     },
-    increaseAmount() {
-      this.amount++
+    updateAmount(value: number) {
+      this.amount = value
     },
-    decreaseAmount() {
-      if (this.amount > 1) this.amount--
+    resetAmount() {
+      this.amount = 1
+    },
+    onAddToCart() {
+      store.addToCart({
+        id: this.product.id,
+        name: this.product.name,
+        price: this.product.price,
+        img: this.product.image.desktop,
+        amount: this.amount
+      });
+      this.resetAmount();
+      this.toast.success(CartAddToast, {
+        timeout: 5000,
+        closeOnClick: true,
+        showCloseButtonOnHover: false,
+        hideProgressBar: true,
+        closeButton: "button",
+        icon: true,
+        rtl: false,
+        toastClassName: ['product__add-toast'],
+        closeButtonClassName: ['toast__close-button']
+      });
     }
   },
   async created() {
@@ -215,36 +226,6 @@ export default defineComponent({
   height: 46px;
 }
 
-.cart__add-wrapper {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 120px;
-  background: #f1f1f1;
-  height: 100%;
-}
-
-.btn__cart {
-  height: 100%;
-}
-
-.btn__add {
-  all: unset;
-  padding: 15px;
-  opacity: 0.25;
-  cursor: pointer;
-  user-select: none;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  -khtml-user-select: none;
-  height: 100%;
-}
-
-.btn__add:hover {
-  opacity: 1;
-}
-
 .detail__features {
   display: grid;
   gap: 24px;
@@ -296,6 +277,11 @@ export default defineComponent({
 .item__content {
   display: grid;
   gap: 32px;
+}
+
+.amount__container {
+  width: 120px;
+  height: 46px;
 }
 
 @media (min-width: 768px) {
