@@ -9,13 +9,14 @@ export interface IModalProps {
   component: null | VueComponenet
   props?: object
   isOpen: boolean
+  isHamburger?: boolean
 }
 
 export interface IModalState {
   modalState: IModalProps
 }
 
-const basicState = { component: null, props: {}, isOpen: false }
+const basicState = { component: null, props: {}, isOpen: false, isHamburger: false }
 
 export default defineStore('modal-store', {
   state: (): IModalState => ({ modalState: basicState }),
@@ -27,7 +28,12 @@ export default defineStore('modal-store', {
 
       if (body) body.style.overflow = 'hidden'
 
-      this.modalState = { component, props: props || {}, isOpen: true }
+      this.modalState = {
+        component,
+        props: props || {},
+        isOpen: true,
+        isHamburger: payload.isHamburger ?? false
+      }
     },
     closeModal() {
       this.modalState = basicState
@@ -38,6 +44,7 @@ export default defineStore('modal-store', {
     }
   },
   getters: {
-    isModalOpen: (state) => state.modalState.isOpen
+    isModalOpen: (state) => state.modalState.isOpen,
+    isHamburgerMenu: (state) => state.modalState.isHamburger
   }
 })

@@ -4,28 +4,18 @@
     <label class="menu-button-container" for="menu-toggle">
       <div class="menu-button"></div>
     </label>
-    <div class="body__overlay" />
-    <!-- <ul class="menu">
-      <li>One</li>
-      <li>Two</li>
-      <li>Three</li>
-      <li>Four</li>
-      <li>Five</li>
-    </ul> -->
   </section>
 </template>
 
 <script lang="ts" setup>
-import { onBeforeRouteLeave } from 'vue-router';
-import ProductCategories from './ProductCategories.vue';
+import { onBeforeRouteLeave } from 'vue-router'
 
 onBeforeRouteLeave(() => {
-  const menuToggle = document.getElementById('menu-toggle') as HTMLInputElement;
+  const menuToggle = document.getElementById('menu-toggle') as HTMLInputElement
   if (menuToggle.checked) {
-    menuToggle.checked = false;
+    menuToggle.checked = false
   }
-});
-
+})
 </script>
 
 <style scoped>
@@ -60,7 +50,7 @@ body {
   border-radius: 0 0 8px 8px;
 }
 
-.menu>li {
+.menu > li {
   display: none;
   justify-content: center;
   margin: 0;
@@ -105,25 +95,25 @@ body {
   margin-top: 8px;
 }
 
-#menu-toggle:checked+.menu-button-container .menu-button::before {
+#menu-toggle:checked + .menu-button-container .menu-button::before {
   margin-top: 0px;
   transform: rotate(405deg);
 }
 
-#menu-toggle:checked+.menu-button-container .menu-button {
+#menu-toggle:checked + .menu-button-container .menu-button {
   background: rgba(255, 255, 255, 0);
 }
 
-#menu-toggle:checked+.menu-button-container .menu-button::after {
+#menu-toggle:checked + .menu-button-container .menu-button::after {
   margin-top: 0px;
   transform: rotate(-405deg);
 }
 
-#menu-toggle:checked~.menu {
+#menu-toggle:checked ~ .menu {
   display: flex;
 }
 
-#menu-toggle~.menu li {
+#menu-toggle ~ .menu li {
   height: 0;
   margin: 0;
   padding: 0;
@@ -131,7 +121,7 @@ body {
   transition: height 400ms cubic-bezier(0.23, 1, 0.32, 1);
 }
 
-#menu-toggle:checked~.menu li {
+#menu-toggle:checked ~ .menu li {
   display: flex;
   height: 2.5em;
   padding: 0.5em;
@@ -139,7 +129,7 @@ body {
   transition: height 400ms cubic-bezier(0.23, 1, 0.32, 1);
 }
 
-.menu>li:not(:last-child) {
+.menu > li:not(:last-child) {
   border-bottom: 1px solid #444;
 }
 

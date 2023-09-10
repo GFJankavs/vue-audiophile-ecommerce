@@ -61,13 +61,13 @@ const formatName = (name: string) => {
   return formattedName
 }
 
-const { cartTotal, cart, clearCart } = useCartStore();
+const { cartTotal, cart, clearCart } = useCartStore()
 
-const { closeModal } = useModalStore();
+const { closeModal } = useModalStore()
 
 const onRemoveAll = () => {
-  clearCart();
-  closeModal();
+  clearCart()
+  closeModal()
 }
 </script>
 

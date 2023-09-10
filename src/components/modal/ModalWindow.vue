@@ -58,11 +58,20 @@ const keyDownListener = (event: KeyboardEvent) => {
   }
 }
 
+const onResize = () => {
+  console.log('resize', store.isHamburgerMenu)
+  if (store.isHamburgerMenu && window.innerWidth > 1023) {
+    store.closeModal()
+  }
+}
+
 onMounted(() => {
   window.addEventListener('keydown', keyDownListener)
+  window.addEventListener('resize', onResize)
 })
 
 onUnmounted(() => {
   window.removeEventListener('keydown', keyDownListener)
+  window.removeEventListener('resize', onResize)
 })
 </script>

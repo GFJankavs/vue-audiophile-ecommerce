@@ -8,10 +8,10 @@ import App from './App.vue'
 import router from './router'
 
 const toastOptions: PluginOptions = {
-    timeout: 3000,
-    transition: 'Vue-Toastification__bounce',
-    closeButton: false,
-} 
+  timeout: 3000,
+  transition: 'Vue-Toastification__bounce',
+  closeButton: false
+}
 
 const app = createApp(App)
 

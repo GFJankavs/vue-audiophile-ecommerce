@@ -9,14 +9,16 @@ const store = useModalStore()
 const openInfoModal = () => {
   store.openModal({
     component: InfoModalWindow,
-    isOpen: true
+    isOpen: true,
+    isHamburger: false
   })
 }
 
 const openHamburgerMenu = () => {
   store.openModal({
     component: ModalHamburger,
-    isOpen: true
+    isOpen: true,
+    isHamburger: true
   })
 }
 const links = ref<{ name: string; path: string }[]>([
@@ -44,7 +46,13 @@ const links = ref<{ name: string; path: string }[]>([
     <div class="container">
       <nav>
         <button class="btn__hamburger" @click="openHamburgerMenu">
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="15" viewBox="0 0 16 15" fill="none">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="15"
+            viewBox="0 0 16 15"
+            fill="none"
+          >
             <rect width="16" height="3" fill="white" />
             <rect y="6" width="16" height="3" fill="white" />
             <rect y="12" width="16" height="3" fill="white" />
@@ -53,8 +61,13 @@ const links = ref<{ name: string; path: string }[]>([
         <!-- <HamburgerMenu class="hamburger" /> -->
         <img src="@assets/audiophile_logo.svg" alt="Logo" />
         <ul class="nav__links">
-          <RouterLink v-for="link of links" :key="link.name" :to="link.path" class="font__subtitle nav__link">{{ link.name
-          }}</RouterLink>
+          <RouterLink
+            v-for="link of links"
+            :key="link.name"
+            :to="link.path"
+            class="font__subtitle nav__link"
+            >{{ link.name }}</RouterLink
+          >
         </ul>
         <button @click="openInfoModal">
           <img src="@assets/icon-cart.svg" alt="Cart" />

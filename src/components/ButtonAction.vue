@@ -1,15 +1,25 @@
 <template>
-  <button v-if="!path && (variant === 'primary' || variant === 'secondary')" class="btn" :class="{
-    primary: variant === 'primary',
-    secondary: variant === 'secondary',
-    btn__full: fullWidth
-  }" @click="() => onClick()">
+  <button
+    v-if="!path && (variant === 'primary' || variant === 'secondary')"
+    class="btn"
+    :class="{
+      primary: variant === 'primary',
+      secondary: variant === 'secondary',
+      btn__full: fullWidth
+    }"
+    @click="() => onClick()"
+  >
     {{ text }}
   </button>
-  <RouterLink v-if="path && (variant === 'primary' || variant === 'secondary')" :to="path" class="btn btn__link" :class="{
-    primary: variant === 'primary',
-    secondary: variant === 'secondary'
-  }">
+  <RouterLink
+    v-if="path && (variant === 'primary' || variant === 'secondary')"
+    :to="path"
+    class="btn btn__link"
+    :class="{
+      primary: variant === 'primary',
+      secondary: variant === 'secondary'
+    }"
+  >
     {{ text }}
   </RouterLink>
   <RouterLink v-else-if="variant === 'tertiary'" class="btn tertiary" :to="path ?? ''">
@@ -49,8 +59,8 @@ export default defineComponent({
   },
   methods: {
     onClick() {
-      console.log('Clicked');
-      this.$emit('click:btn');
+      console.log('Clicked')
+      this.$emit('click:btn')
     }
   },
   emits: ['click:btn']
