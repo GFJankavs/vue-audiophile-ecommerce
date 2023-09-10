@@ -3,16 +3,8 @@
     <div class="product__grid">
       <section class="product__first">
         <div class="first__content">
-          <img
-            src="@assets/home/mobile/image-speaker-zx9.png"
-            alt=""
-            class="first__img first__img--mobile"
-          />
-          <img
-            src="@assets/home/desktop/image-speaker-zx9.png"
-            alt=""
-            class="first__img first__img--desktop"
-          />
+          <img src="@assets/home/mobile/image-speaker-zx9.png" alt="" class="first__img first__img--mobile" />
+          <img src="@assets/home/desktop/image-speaker-zx9.png" alt="" class="first__img first__img--desktop" />
           <div class="first__text-content">
             <h3 class="first__title">ZX9 SPEAKER</h3>
             <p class="font__body first__text">
@@ -29,16 +21,8 @@
       </section>
       <section class="product__third">
         <div class="third__img-container">
-          <img
-            src="@assets/home/mobile/image-earphones-yx1.jpg"
-            alt="Earphones"
-            class="third__img third__img--mobile"
-          />
-          <img
-            src="@assets/home/tablet/image-earphones-yx1.jpg"
-            alt="Earphones"
-            class="third__img third__img--tablet"
-          />
+          <img src="@assets/home/mobile/image-earphones-yx1.jpg" alt="Earphones" class="third__img third__img--mobile" />
+          <img src="@assets/home/tablet/image-earphones-yx1.jpg" alt="Earphones" class="third__img third__img--tablet" />
         </div>
         <div class="third__content">
           <h4 class="font__h4">YX1 EARPHONES</h4>
@@ -173,6 +157,7 @@ export default defineComponent({
 
   .product__second {
     background-image: url('@assets/home/tablet/image-speaker-zx7.jpg');
+    padding: 100px 0 100px 64px;
   }
 
   .product__third {
@@ -198,6 +183,7 @@ export default defineComponent({
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
+    padding: 101px 0 101px 40px;
   }
 }
 
@@ -241,6 +227,11 @@ export default defineComponent({
 
   .product__second {
     background-image: url('@assets/home/desktop/image-speaker-zx7.jpg');
+    padding: 101px 0 101px 95px;
+  }
+
+  .third__content {
+    padding: 101px 0 101px 95px;
   }
 }
 </style>

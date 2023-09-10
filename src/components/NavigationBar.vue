@@ -9,10 +9,6 @@ const store = useModalStore()
 const openInfoModal = () => {
   store.openModal({
     component: InfoModalWindow,
-    props: {
-      title: 'Info',
-      text: 'This is a modal window!'
-    },
     isOpen: true
   })
 }
@@ -43,13 +39,8 @@ const links = ref<{ name: string; path: string }[]>([
         <HamburgerMenu class="hamburger" />
         <img src="@assets/audiophile_logo.svg" alt="Logo" />
         <ul class="nav__links">
-          <RouterLink
-            v-for="link of links"
-            :key="link.name"
-            :to="link.path"
-            class="font__subtitle nav__link"
-            >{{ link.name }}</RouterLink
-          >
+          <RouterLink v-for="link of links" :key="link.name" :to="link.path" class="font__subtitle nav__link">{{ link.name
+          }}</RouterLink>
         </ul>
         <button @click="openInfoModal">
           <img src="@assets/icon-cart.svg" alt="Cart" />

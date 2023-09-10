@@ -3,30 +3,33 @@
     <div class="inner">
       <div class="cart__products">
         <div class="cart__top">
-          <h6 class="font__h6">CART (3)</h6>
-          <button title="">Remove all</button>
+          <h6 class="font__h6">CART {{ `(${cart.length})` }}</h6>
+          <button title="" @click="onRemoveAll" :disabled="cart.length === 0">Remove all</button>
         </div>
-        <div class="cart__items">
+        <div class="cart__items" v-if="cart.length > 0">
           <div v-for="item of cart" :key="item.id" class="item">
             <div class="item__product">
-              <img :src="item.image.desktop" :alt="item.name" class="item__img" />
+              <img :src="item.img" :alt="item.name" class="item__img" />
               <div class="item__text">
                 <h5 class="font__body">{{ formatName(item.name) }}</h5>
                 <span class="item__price">$ {{ numberWithCommas(item.price) }}</span>
               </div>
             </div>
             <div class="amount__container">
-              <AmountIncrement :value="1" />
+              <AmountIncrement :value="item.amount" />
             </div>
           </div>
         </div>
-        <div class="cart__total">
+        <div class="cart__total" v-if="cart.length > 0">
           <h6 class="font__body total__title">TOTAL</h6>
-          <span class="font__h6">$ {{ numberWithCommas(total) }}</span>
+          <span class="font__h6">$ {{ numberWithCommas(cartTotal) }}</span>
+        </div>
+        <div class="cart__empty" v-if="cart.length === 0">
+          <h6 class="font__body cart__empty-text">Your cart is empty</h6>
         </div>
       </div>
       <div class="cart__btn">
-        <ButtonAction text="Checkout" variant="primary" :fullWidth="true" />
+        <ButtonAction text="Checkout" variant="primary" :fullWidth="true" path="/checkout" />
       </div>
     </div>
   </div>
@@ -35,9 +38,8 @@
 <script setup lang="ts">
 import AmountIncrement from '@/components/AmountIncrement.vue'
 import ButtonAction from '@/components/ButtonAction.vue'
+import { useCartStore } from '@/stores/useCartStore'
 import useModalStore from '@/stores/useModalStore'
-import type { AudiophileData } from '@/types'
-import { shallowRef, onMounted, computed } from 'vue'
 
 const numberWithCommas = (x: number) => {
   return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')
@@ -59,19 +61,14 @@ const formatName = (name: string) => {
   return formattedName
 }
 
-const total = computed(() => {
-  return cart.value.reduce((acc, curr) => acc + curr.price, 0)
-})
+const { cartTotal, cart, clearCart } = useCartStore();
 
-const cart = shallowRef<AudiophileData[] | []>([])
+const { closeModal } = useModalStore();
 
-onMounted(async () => {
-  const products = await fetch('/src/data/data.json').then<AudiophileData[]>((res) => res.json())
-  cart.value = products
-  console.log(cart.value)
-})
-
-const { closeModal } = useModalStore()
+const onRemoveAll = () => {
+  clearCart();
+  closeModal();
+}
 </script>
 
 <style scoped>
@@ -166,9 +163,21 @@ const { closeModal } = useModalStore()
   height: 48px;
 }
 
+.cart__empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.cart__empty-text {
+  font-size: 18px;
+}
+
 @media (min-width: 768px) {
   .inner__wrapper {
     justify-items: flex-end;
   }
 }
 </style>
+@/stores/useCartStore
