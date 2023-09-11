@@ -82,6 +82,7 @@ export default defineComponent({
 
 .btn__full {
   width: 100%;
+  height: 100%;
 }
 
 .btn__link {

@@ -105,6 +105,7 @@ Use this section to outline areas that you want to continue focusing on in futur
 
 - [Hamburger Menu](https://codepen.io/ysk2645/pen/wvBabpe) - .
 - [Reusable modal component in Vue](https://itnext.io/how-to-build-a-reusable-modal-component-in-vuejs-f1799ab9b3e) - This is an amazing article which helped me finally understand XYZ. I'd recommend it to anyone still learning this concept.
+- [Custom Autocomplete input](https://www.w3schools.com/howto/howto_js_autocomplete.asp) -
 
 **Note: Delete this note and replace the list above with resources that helped you during the challenge. These could come in handy for anyone viewing your solution or for yourself when you look back on this project in the future.**
 

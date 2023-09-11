@@ -1,9 +1,12 @@
+// TODO: Pārsaukt komponenti uz CartModalWindow
+
 <template>
   <div class="inner__wrapper" @click.self="closeModal">
     <div class="inner">
       <div class="cart__products">
         <div class="cart__top">
           <h6 class="font__h6">CART {{ `(${cart.length})` }}</h6>
+          //TODO: Pievienot klasi disabled, ja cart.length === 0, kā arī pareizo stilu
           <button title="" @click="onRemoveAll" :disabled="cart.length === 0">Remove all</button>
         </div>
         <div class="cart__items" v-if="cart.length > 0">
@@ -38,28 +41,9 @@
 <script setup lang="ts">
 import AmountIncrement from '@/components/AmountIncrement.vue'
 import ButtonAction from '@/components/ButtonAction.vue'
+import { formatName, numberWithCommas } from '@/helpers'
 import { useCartStore } from '@/stores/useCartStore'
 import useModalStore from '@/stores/useModalStore'
-
-const numberWithCommas = (x: number) => {
-  return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')
-}
-
-const formatName = (name: string) => {
-  let formattedName = name.trim()
-
-  formattedName = formattedName.replace('Headphones', '')
-  formattedName = formattedName.replace('Earphones', '')
-  formattedName = formattedName.replace('Speaker', '')
-  formattedName = formattedName.replace('Wireless', '')
-
-  formattedName = formattedName.replace('Mark I', 'MK I')
-  formattedName = formattedName.replace('Mark II', 'MK II')
-
-  formattedName = formattedName.trim()
-
-  return formattedName
-}
 
 const { cartTotal, cart, clearCart } = useCartStore()
 
