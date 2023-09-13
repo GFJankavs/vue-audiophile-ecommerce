@@ -31,8 +31,6 @@ const router = createRouter({
 router.beforeEach((to, from, next) => {
   const store = useModalStore()
 
-  console.log(from)
-
   const modal = document.querySelector('.modal-wrapper')
 
   if (modal) {

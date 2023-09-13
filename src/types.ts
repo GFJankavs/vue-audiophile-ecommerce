@@ -36,3 +36,23 @@ export interface Other {
   name: string
   image: CategoryImage
 }
+
+export interface CheckoutFormData {
+  name: string,
+  email: string,
+  phone: string,
+  address: string,
+  zip: string,
+  city: string,
+  country: { name: string, code: string },
+  payment: 'money' | 'cash',
+  eMoney: {
+    number: string;
+    pin: string;
+  }
+}
+
+export interface Country {
+  name: string,
+  code: string
+}

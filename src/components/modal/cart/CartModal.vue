@@ -1,13 +1,10 @@
-// TODO: Pārsaukt komponenti uz CartModalWindow
-
 <template>
   <div class="inner__wrapper" @click.self="closeModal">
     <div class="inner">
       <div class="cart__products">
         <div class="cart__top">
           <h6 class="font__h6">CART {{ `(${cart.length})` }}</h6>
-          //TODO: Pievienot klasi disabled, ja cart.length === 0, kā arī pareizo stilu
-          <button title="" @click="onRemoveAll" :disabled="cart.length === 0">Remove all</button>
+          <button title="" @click="onRemoveAll" v-if="cart.length !== 0" class="font__body btn__remove">Remove all</button>
         </div>
         <div class="cart__items" v-if="cart.length > 0">
           <div v-for="item of cart" :key="item.id" class="item">
@@ -78,6 +75,14 @@ const onRemoveAll = () => {
   gap: 24px;
   user-select: none;
   width: 377px;
+}
+
+.btn__remove {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  opacity: 0.5;
 }
 
 .cart__products {

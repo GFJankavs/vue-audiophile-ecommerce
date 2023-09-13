@@ -17,7 +17,8 @@
     class="btn btn__link"
     :class="{
       primary: variant === 'primary',
-      secondary: variant === 'secondary'
+      secondary: variant === 'secondary',
+      btn__full: fullWidth
     }"
   >
     {{ text }}

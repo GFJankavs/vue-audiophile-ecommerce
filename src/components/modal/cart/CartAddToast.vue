@@ -2,7 +2,7 @@
   <div class="toast__grid">
     <span class="font__body">Product has been added to cart</span>
     <span>
-      <a href="/checkout" class="toast__link">Go to Checkout</a>
+      <router-link to="/checkout" class="toast__link">Go to Checkout</router-link>
     </span>
   </div>
 </template>

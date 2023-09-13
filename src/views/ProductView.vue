@@ -5,11 +5,7 @@
       <div class="detail">
         <div class="detail__info">
           <picture>
-            <source
-              :srcset="product.image.desktop"
-              media="(min-width: 1024px)"
-              class="detail__img"
-            />
+            <source :srcset="product.image.desktop" media="(min-width: 1024px)" class="detail__img" />
             <source :srcset="product.image.tablet" media="(min-width: 768px)" class="detail__img" />
             <img :src="product.image.mobile" :alt="product.name" class="detail__img" />
           </picture>
@@ -36,11 +32,7 @@
           <div class="detail__features">
             <h5 class="font__h5">Features</h5>
             <div class="features__paragraphs">
-              <p
-                v-for="paragraph of featuresParagraphs"
-                :key="paragraph"
-                class="font__body detail__description"
-              >
+              <p v-for="paragraph of featuresParagraphs" :key="paragraph" class="font__body detail__description">
                 {{ paragraph }}
               </p>
             </div>
@@ -66,24 +58,13 @@
             <div v-for="item of product.others" :key="item.slug">
               <div class="item__grid">
                 <picture>
-                  <source
-                    :srcset="item.image.desktop"
-                    media="(min-width: 1024px)"
-                    class="item__img"
-                  />
-                  <source
-                    :srcset="item.image.tablet"
-                    media="(min-width: 768px)"
-                    class="item__img"
-                  />
+                  <source :srcset="item.image.desktop" media="(min-width: 1024px)" class="item__img" />
+                  <source :srcset="item.image.tablet" media="(min-width: 768px)" class="item__img" />
                   <img :src="item.image.mobile" :alt="item.name" class="item__img" />
                 </picture>
                 <div class="item__content">
                   <h5 class="font__h5">{{ item.name }}</h5>
-                  <ButtonAction
-                    text="See Product"
-                    :path="`/${$route.params.category.toString()}/${item.slug}`"
-                  />
+                  <ButtonAction text="See Product" :path="`/${$route.params.category.toString()}/${item.slug}`" />
                 </div>
               </div>
             </div>
@@ -160,7 +141,7 @@ export default defineComponent({
       })
       this.resetAmount()
       this.toast.success(CartAddToast, {
-        timeout: 5000,
+        timeout: false,
         closeOnClick: true,
         showCloseButtonOnHover: false,
         hideProgressBar: true,

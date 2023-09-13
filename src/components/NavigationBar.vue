@@ -1,14 +1,14 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import ModalHamburger from './modal/hamburger/ModalHamburger.vue'
-import InfoModalWindow from './modal/cart/InfoModalWindow.vue'
 import useModalStore from '@/stores/useModalStore'
+import CartModal from './modal/cart/CartModal.vue';
 
 const store = useModalStore()
 
 const openInfoModal = () => {
   store.openModal({
-    component: InfoModalWindow,
+    component: CartModal,
     isOpen: true,
     isHamburger: false
   })
