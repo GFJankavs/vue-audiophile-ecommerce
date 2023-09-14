@@ -25,10 +25,6 @@
           products. Stop by our store to meet some of the fantastic people who make Audiophile the
           best place to buy your portable audio equipment.
         </p>
-        <img
-          src="https://github.com/GFJankavs/AGdir-Angular/blob/main/src/assets/horizontal_logo.svg"
-          alt="Construction"
-        />
       </div>
     </div>
   </div>

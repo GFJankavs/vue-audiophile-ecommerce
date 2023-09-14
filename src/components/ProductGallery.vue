@@ -2,51 +2,51 @@
   <div class="gallery">
     <div class="gallery__img--1">
       <img
-        :src="`/src/assets/product-${productSlug}/mobile/image-gallery-1.jpg`"
+        :src="gallery.first.mobile"
         alt="Gallery Image 1"
         class="gallery__img gallery__img--mobile"
       />
       <img
-        :src="`/src/assets/product-${productSlug}/tablet/image-gallery-1.jpg`"
+        :src="gallery.first.tablet"
         alt="Gallery Image 1"
         class="gallery__img gallery__img--tablet"
       />
       <img
-        :src="`/src/assets/product-${productSlug}/desktop/image-gallery-1.jpg`"
+        :src="gallery.first.desktop"
         alt="Gallery Image 1"
         class="gallery__img gallery__img--desktop"
       />
     </div>
     <div class="gallery__img--2">
       <img
-        :src="`/src/assets/product-${productSlug}/mobile/image-gallery-2.jpg`"
+        :src="gallery.second.mobile"
         alt="Gallery Image 1"
         class="gallery__img gallery__img--mobile"
       />
       <img
-        :src="`/src/assets/product-${productSlug}/tablet/image-gallery-2.jpg`"
+        :src="gallery.second.tablet"
         alt="Gallery Image 1"
         class="gallery__img gallery__img--tablet"
       />
       <img
-        :src="`/src/assets/product-${productSlug}/desktop/image-gallery-2.jpg`"
+        :src="gallery.second.desktop"
         alt="Gallery Image 1"
         class="gallery__img gallery__img--desktop"
       />
     </div>
     <div class="gallery__img--3">
       <img
-        :src="`/src/assets/product-${productSlug}/mobile/image-gallery-3.jpg`"
+        :src="gallery.third.mobile"
         alt="Gallery Image 1"
         class="gallery__img gallery__img--mobile"
       />
       <img
-        :src="`/src/assets/product-${productSlug}/tablet/image-gallery-3.jpg`"
+        :src="gallery.third.tablet"
         alt="Gallery Image 1"
         class="gallery__img gallery__img--tablet"
       />
       <img
-        :src="`/src/assets/product-${productSlug}/desktop/image-gallery-3.jpg`"
+        :src="gallery.third.desktop"
         alt="Gallery Image 1"
         class="gallery__img gallery__img--desktop"
       />
@@ -55,11 +55,12 @@
 </template>
 <script lang="ts">
 import { defineComponent } from 'vue'
+import { type Gallery } from '@/types'
 
 export default defineComponent({
   props: {
-    productSlug: {
-      type: String,
+    gallery: {
+      type: Object as () => Gallery,
       required: true
     }
   }

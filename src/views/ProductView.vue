@@ -59,7 +59,7 @@
             </div>
           </div>
         </div>
-        <ProductGallery :product-slug="product.slug" />
+        <ProductGallery :gallery="product.gallery" />
         <div class="detail__others">
           <h5 class="font__h5">you may also like</h5>
           <div class="others__grid">
