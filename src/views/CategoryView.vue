@@ -61,11 +61,12 @@ export default defineComponent({
   watch: {
     $route(to) {
       this.prepareProductData(to.params.category)
+      document.title = `Audiophile - ${this.title[0].toUpperCase() + this.title.slice(1)}`
     }
   },
   async mounted() {
     await this.prepareProductData(this.$route.params.category)
-    document.title = `Audiophile | ${this.title}`
+    document.title = `Audiophile - ${this.title[0].toUpperCase() + this.title.slice(1)}`
   }
 })
 </script>
