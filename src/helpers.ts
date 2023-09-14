@@ -68,3 +68,11 @@ export const checkIfEveryInputFilled = (data: CheckoutFormData) => {
 
   return true
 }
+
+export const fetchData = async () => {
+  const url = import.meta.env.MODE === 'development' ? '/src/data/data.json' : '/data.json';
+  const res = await fetch(url)
+  const data = await res.json()
+
+  return data
+}
