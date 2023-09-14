@@ -70,7 +70,10 @@ export const checkIfEveryInputFilled = (data: CheckoutFormData) => {
 }
 
 export const fetchData = async () => {
-  const url = import.meta.env.MODE === 'development' ? '/src/data/data.json' : '/data.json';
+  const url =
+    import.meta.env.MODE === 'development'
+      ? '/src/data/data.json'
+      : '/vue-audiophile-ecommerce/data.json'
   const res = await fetch(url)
   const data = await res.json()
 

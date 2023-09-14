@@ -9,8 +9,12 @@
       <section>
         <div class="container">
           <div class="product__grid">
-            <ProductCard v-for="product of products" :key="product.name" :product="product"
-              :category="$route.params.category.toString()" />
+            <ProductCard
+              v-for="product of products"
+              :key="product.name"
+              :product="product"
+              :category="$route.params.category.toString()"
+            />
           </div>
         </div>
       </section>
@@ -30,7 +34,7 @@ import { defineComponent } from 'vue'
 import ProductCard from '@/components/ProductCard.vue'
 import ProductCategories from '@/components/ProductCategories.vue'
 import HomepageInfo from '@/components/HomepageInfo.vue'
-import { fetchData } from "@/helpers";
+import { fetchData } from '@/helpers'
 
 export default defineComponent({
   name: 'CategoryView',
@@ -48,7 +52,7 @@ export default defineComponent({
   methods: {
     async prepareProductData(category: string | string[]) {
       if (Array.isArray(category)) return
-      const response = await fetchData();
+      const response = await fetchData()
       const filteredData = response.filter((item: AudiophileData) => item.category === category)
       this.title = category
       this.products = filteredData
