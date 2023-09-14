@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia'
-import { useStorage } from '@vueuse/core'
+import { useStorage, type RemovableRef } from '@vueuse/core'
 
 interface CartItem {
   id: number
@@ -10,14 +10,14 @@ interface CartItem {
 }
 
 interface ICartState {
-  cart: CartItem[]
+  cart: RemovableRef<CartItem[]>
 }
 
 const basicState = { cart: [] }
 
 export const useCartStore = defineStore('cart', {
   state: (): ICartState => ({
-    cart: useStorage('audiophile_cart', basicState.cart)
+    cart: useStorage<CartItem[]>('audiophile_cart', basicState.cart)
   }),
   actions: {
     addToCart(item: CartItem) {
