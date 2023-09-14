@@ -8,11 +8,12 @@
 }
 
 html {
-  min-width: 100vw;
+  overflow-x: hidden;
 }
 
 body {
   font-family: 'Manrope', sans-serif;
+  width: 100vw;
   min-height: 100vh;
   transition:
     color 0.5s,
@@ -22,4 +23,18 @@ body {
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+@supports (-ms-ime-align: auto) or (-ms-accelerator: true) {
+  /* Microsoft Edge */
+  html {
+    overflow-x: hidden;
+  }
+}
+
+@supports (-webkit-appearance: none) {
+  /* Google Chrome and Opera */
+  html {
+    overflow-x: hidden;
+  }
 }

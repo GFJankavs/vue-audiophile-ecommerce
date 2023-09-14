@@ -82,7 +82,7 @@ const links = ref<{ name: string; path: string }[]>([
   position: relative;
   z-index: 99;
   background-color: #000;
-  min-width: 100vw;
+  width: 100%;
 }
 
 nav {
