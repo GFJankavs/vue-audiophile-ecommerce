@@ -34,7 +34,6 @@ import { defineComponent } from 'vue'
 import ProductCard from '@/components/ProductCard.vue'
 import ProductCategories from '@/components/ProductCategories.vue'
 import HomepageInfo from '@/components/HomepageInfo.vue'
-import ProductsData from '@/data/data.json'
 
 export default defineComponent({
   name: 'CategoryView',
@@ -50,9 +49,10 @@ export default defineComponent({
     HomepageInfo
   },
   methods: {
-    prepareProductData(category: string | string[]) {
+    async prepareProductData(category: string | string[]) {
       if (Array.isArray(category)) return
-      const filteredData = ProductsData.filter((item: AudiophileData) => item.category === category)
+      const response = await fetch('/src/data/data.json').then((res) => res.json())
+      const filteredData = response.filter((item: AudiophileData) => item.category === category)
       this.title = category
       this.products = filteredData
     }
