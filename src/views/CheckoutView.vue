@@ -14,71 +14,138 @@
                     <label class="input__label" for="name">Name</label>
                     <span class="error__text" v-if="error?.input === 'name'">{{ error?.msg }}</span>
                   </div>
-                  <input class="input" type="text" id="name" placeholder="Alexei Ward" v-model="formData.name" />
+                  <input
+                    class="input"
+                    type="text"
+                    id="name"
+                    placeholder="Alexei Ward"
+                    v-model="formData.name"
+                  />
                 </div>
                 <div class="checkout__input" :class="{ error: error?.input === 'email' }">
                   <div class="label__flex">
                     <label class="input__label" for="email">Email Address</label>
-                    <span class="error__text" v-if="error?.input === 'email'">{{ error?.msg }}</span>
+                    <span class="error__text" v-if="error?.input === 'email'">{{
+                      error?.msg
+                    }}</span>
                   </div>
-                  <input class="input" type="email" id="email" placeholder="alexei@mail.com" v-model="formData.email" />
+                  <input
+                    class="input"
+                    type="email"
+                    id="email"
+                    placeholder="alexei@mail.com"
+                    v-model="formData.email"
+                  />
                 </div>
                 <div class="checkout__input" :class="{ error: error?.input === 'phone' }">
                   <div class="label__flex">
                     <label class="input__label" for="phone">Phone Number</label>
-                    <span class="error__text" v-if="error?.input === 'phone'">{{ error?.msg }}</span>
+                    <span class="error__text" v-if="error?.input === 'phone'">{{
+                      error?.msg
+                    }}</span>
                   </div>
-                  <input class="input" type="text" id="phone" placeholder="+1 202-555-0136" v-model="formData.phone" />
+                  <input
+                    class="input"
+                    type="text"
+                    id="phone"
+                    placeholder="+1 202-555-0136"
+                    v-model="formData.phone"
+                  />
                 </div>
               </div>
             </div>
             <div class="checkout__info-section">
               <span class="font__subtitle checkout__title">shipping info</span>
               <div class="checkout__inputs checkout__shipping">
-                <div class="checkout__input input__address" :class="{ error: error?.input === 'address' }">
+                <div
+                  class="checkout__input input__address"
+                  :class="{ error: error?.input === 'address' }"
+                >
                   <div class="label__flex">
                     <label class="input__label" for="address">Your Address</label>
-                    <span class="error__text" v-if="error?.input === 'address'">{{ error?.msg }}</span>
+                    <span class="error__text" v-if="error?.input === 'address'">{{
+                      error?.msg
+                    }}</span>
                   </div>
-                  <input class="input" type="text" id="address" placeholder="1137 Williams Avenue"
-                    v-model="formData.address" />
+                  <input
+                    class="input"
+                    type="text"
+                    id="address"
+                    placeholder="1137 Williams Avenue"
+                    v-model="formData.address"
+                  />
                 </div>
                 <div class="checkout__input input__zip" :class="{ error: error?.input === 'zip' }">
                   <div class="label__flex">
                     <label class="input__label" for="zip">ZIP Code</label>
                     <span class="error__text" v-if="error?.input === 'zip'">{{ error?.msg }}</span>
                   </div>
-                  <input class="input input__number" type="number" id="zip" placeholder="10001" v-model="formData.zip"
-                    @keydown="onNumberInputKeydown" />
+                  <input
+                    class="input input__number"
+                    type="number"
+                    id="zip"
+                    placeholder="10001"
+                    v-model="formData.zip"
+                    @keydown="onNumberInputKeydown"
+                  />
                 </div>
-                <div class="checkout__input input__city" :class="{ error: error?.input === 'city' }">
+                <div
+                  class="checkout__input input__city"
+                  :class="{ error: error?.input === 'city' }"
+                >
                   <div class="label__flex">
                     <label class="input__label" for="city">City</label>
                     <span class="error__text" v-if="error?.input === 'city'">{{ error?.msg }}</span>
                   </div>
-                  <input class="input" type="text" id="city" placeholder="New York" v-model="formData.city" />
+                  <input
+                    class="input"
+                    type="text"
+                    id="city"
+                    placeholder="New York"
+                    v-model="formData.city"
+                  />
                 </div>
-                <div class="checkout__input input__country" :class="{ error: error?.input === 'country' }">
+                <div
+                  class="checkout__input input__country"
+                  :class="{ error: error?.input === 'country' }"
+                >
                   <div class="label__flex">
                     <label class="input__label" for="city">Country</label>
-                    <span class="error__text" v-if="error?.input === 'country'">{{ error?.msg }}</span>
+                    <span class="error__text" v-if="error?.input === 'country'">{{
+                      error?.msg
+                    }}</span>
                   </div>
-                  <SearchAutocomplete :items="countries.map((country) => country.name)" :value="formData.country"
-                    @input:change="onCountryUpdate" placeholder="United States" />
+                  <SearchAutocomplete
+                    :items="countries.map((country) => country.name)"
+                    :value="formData.country"
+                    @input:change="onCountryUpdate"
+                    placeholder="United States"
+                  />
                 </div>
               </div>
             </div>
-            <div class="checkout__payments" :class="{ checkout__cash: formData.payment === 'cash' }">
+            <div
+              class="checkout__payments"
+              :class="{ checkout__cash: formData.payment === 'cash' }"
+            >
               <div class="checkout__info-section">
                 <span class="font__subtitle checkout__title">payment details</span>
                 <div class="checkout__inputs">
                   <div class="checkout__input checkout__radio">
                     <label class="input__label" for="address">Payment Method</label>
                     <div class="radio__grid">
-                      <CheckoutRadioInput text="e-Money" :checked="formData.payment === 'money'" name="money"
-                        @radio:selected="onPaymentSelect" />
-                      <CheckoutRadioInput text="Cash on Delivery" :checked="formData.payment === 'cash'" name="cash"
-                        @radio:selected="onPaymentSelect" />
+                      <CheckoutRadioInput
+                        text="e-Money"
+                        :checked="formData.payment === 'money'"
+                        name="money"
+                        @radio:selected="onPaymentSelect"
+                      />
+                      <CheckoutRadioInput
+                        text="Cash on Delivery"
+                        :checked="formData.payment === 'cash'"
+                        name="cash"
+                        @radio:selected="onPaymentSelect"
+                      />
                     </div>
                   </div>
                 </div>
@@ -87,26 +154,44 @@
                 <div class="checkout__input" :class="{ error: error?.input === 'money_number' }">
                   <div class="label__flex">
                     <label class="input__label" for="money_number">e-Money Number</label>
-                    <span class="error__text" v-if="error?.input === 'money_number'">{{ error?.msg }}</span>
+                    <span class="error__text" v-if="error?.input === 'money_number'">{{
+                      error?.msg
+                    }}</span>
                   </div>
-                  <input class="input input__number" type="number" id="money_number" placeholder="238521993"
-                    v-model="formData.eMoney.number" @keydown="onNumberInputKeydown" maxlength="9" />
+                  <input
+                    class="input input__number"
+                    type="number"
+                    id="money_number"
+                    placeholder="238521993"
+                    v-model="formData.eMoney.number"
+                    @keydown="onNumberInputKeydown"
+                    maxlength="9"
+                  />
                 </div>
                 <div class="checkout__input" :class="{ error: error?.input === 'money_pin' }">
                   <div class="label__flex">
                     <label class="input__label" for="money_pin">e-Money PIN</label>
-                    <span class="error__text" v-if="error?.input === 'money_pin'">{{ error?.msg }}</span>
+                    <span class="error__text" v-if="error?.input === 'money_pin'">{{
+                      error?.msg
+                    }}</span>
                   </div>
-                  <input class="input input__number" type="number" id="money_pin" placeholder="6891"
-                    v-model="formData.eMoney.pin" @keydown="onNumberInputKeydown" maxlength="4" />
+                  <input
+                    class="input input__number"
+                    type="number"
+                    id="money_pin"
+                    placeholder="6891"
+                    v-model="formData.eMoney.pin"
+                    @keydown="onNumberInputKeydown"
+                    maxlength="4"
+                  />
                 </div>
               </div>
               <div class="cash__info-container" v-if="formData.payment === 'cash'">
                 <img src="@assets/checkout/icon-cash-on-delivery.svg" alt="Cash on Delivery" />
                 <p class="font__body cash__info-text">
-                  The &#x2018;Cash on Delivery&#x2019; option enables you to pay in cash when our delivery courier arrives
-                  at your
-                  residence. Just make sure your address is correct so that your order will not be cancelled.
+                  The &#x2018;Cash on Delivery&#x2019; option enables you to pay in cash when our
+                  delivery courier arrives at your residence. Just make sure your address is correct
+                  so that your order will not be cancelled.
                 </p>
               </div>
             </div>
@@ -160,76 +245,78 @@
 </template>
 
 <script setup lang="ts">
-import * as EmailValidator from 'email-validator';
+import * as EmailValidator from 'email-validator'
 import ButtonAction from '@/components/ButtonAction.vue'
-import CheckoutModal from "@/components/modal/checkout/CheckoutModal.vue"
+import CheckoutModal from '@/components/modal/checkout/CheckoutModal.vue'
 import { checkIfEveryInputFilled, formatName, numberWithCommas } from '@/helpers'
 import { type CheckoutFormData, type Country } from '@/types'
 import router from '@/router'
 import { useCartStore } from '@/stores/useCartStore'
 import { onMounted, ref, watch } from 'vue'
-import { countries } from '@/data/countries';
-import SearchAutocomplete from '@/components/SearchAutocomplete.vue';
-import CheckoutRadioInput from '@/components/CheckoutRadioInput.vue';
-import { isValidNumber, type CountryCode } from "libphonenumber-js";
-import useModalStore from '@/stores/useModalStore';
+import { countries } from '@/data/countries'
+import SearchAutocomplete from '@/components/SearchAutocomplete.vue'
+import CheckoutRadioInput from '@/components/CheckoutRadioInput.vue'
+import { isValidNumber, type CountryCode } from 'libphonenumber-js'
+import useModalStore from '@/stores/useModalStore'
 
-const { openModal } = useModalStore();
+const { openModal } = useModalStore()
 
 const findCountry = (query: string) => {
-  if (!query) return;
+  if (!query) return
 
-  const country = countries.find((country) => country.name.toLowerCase().includes(query.toLowerCase()))
+  const country = countries.find((country) =>
+    country.name.toLowerCase().includes(query.toLowerCase())
+  )
 
-  return country;
+  return country
 }
 
 const onNumberInputKeydown = (e: KeyboardEvent) => {
-  if (e.key === "ArrowDown" || e.key === "ArrowUp") {
-    e.preventDefault();
+  if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
+    e.preventDefault()
   }
 }
 
 const onCountryUpdate = (value: string) => {
-  const existingCountry = findCountry(value);
+  const existingCountry = findCountry(value)
 
   if (existingCountry) {
-    formData.value.country = existingCountry;
+    formData.value.country = existingCountry
   } else {
     formData.value.country = { name: value, code: '' }
   }
 }
 
 const onFormSubmit = () => {
-  error.value = null;
+  error.value = null
 
-  const result: { input: string, msg: string } | boolean = checkIfEveryInputFilled(formData.value);
+  const result: { input: string; msg: string } | boolean = checkIfEveryInputFilled(formData.value)
 
   if (result !== true) {
-    error.value = result;
-    return;
+    error.value = result
+    return
   }
 
-  const country = findCountry(formData.value.country.name);
+  const country = findCountry(formData.value.country.name)
 
   if (!EmailValidator.validate(formData.value.email)) {
-    error.value = { input: 'email', msg: 'Invalid email address' };
-    return;
+    error.value = { input: 'email', msg: 'Invalid email address' }
+    return
   }
 
   if (!country) {
-    error.value = { input: 'country', msg: 'Invalid country' };
-    return;
+    error.value = { input: 'country', msg: 'Invalid country' }
+    return
   }
 
   if (!isValidNumber(formData.value.phone, country.code as CountryCode)) {
-    error.value = { input: 'phone', msg: 'Invalid phone number' };
-    return;
+    error.value = { input: 'phone', msg: 'Invalid phone number' }
+    return
   }
 
   if (formData.value.payment === 'money' && formData.value.eMoney.pin.length !== 4) {
-    error.value = { input: 'money_pin', msg: 'Invalid e-Money PIN' };
-    return;
+    error.value = { input: 'money_pin', msg: 'Invalid e-Money PIN' }
+    return
   }
 
   openModal({
@@ -240,8 +327,8 @@ const onFormSubmit = () => {
 }
 
 const onPaymentSelect = (name: 'money' | 'cash') => {
-  if (name === formData.value.payment) return;
-  formData.value.payment = name;
+  if (name === formData.value.payment) return
+  formData.value.payment = name
 }
 
 const { cart, cartTotal, cartShipping, cartVat } = useCartStore()
@@ -268,21 +355,11 @@ const formData = ref<CheckoutFormData>({
   }
 })
 
-const error = ref<{ input: string, msg: string } | null>(null);
+const error = ref<{ input: string; msg: string } | null>(null)
 
 watch(formData, (value) => {
   console.log(value)
 })
-
-// onMounted(() => {
-//   openModal({
-//     component: CheckoutModal,
-//     isOpen: true,
-//     isHamburger: false
-//   })
-// })
-
-
 </script>
 
 <style scoped>
@@ -338,15 +415,15 @@ watch(formData, (value) => {
 }
 
 .checkout__input.error .input__label {
-  color: #CD2C2C;
+  color: #cd2c2c;
 }
 
 .checkout__input.error .input {
-  border-color: #CD2C2C;
+  border-color: #cd2c2c;
 }
 
 .checkout__input.error .error__text {
-  color: #CD2C2C;
+  color: #cd2c2c;
   text-align: right;
   font-size: 12px;
   font-style: normal;
@@ -380,12 +457,12 @@ watch(formData, (value) => {
   font-weight: 700;
   line-height: normal;
   letter-spacing: -0.25px;
-  caret-color: #D87D4A;
+  caret-color: #d87d4a;
 }
 
 .input:focus {
   outline: none;
-  border-color: #D87D4A;
+  border-color: #d87d4a;
 }
 
 .input::placeholder {

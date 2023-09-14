@@ -4,7 +4,14 @@
       <div class="cart__products">
         <div class="cart__top">
           <h6 class="font__h6">CART {{ `(${cart.length})` }}</h6>
-          <button title="" @click="onRemoveAll" v-if="cart.length !== 0" class="font__body btn__remove">Remove all</button>
+          <button
+            title=""
+            @click="onRemoveAll"
+            v-if="cart.length !== 0"
+            class="font__body btn__remove"
+          >
+            Remove all
+          </button>
         </div>
         <div class="cart__items" v-if="cart.length > 0">
           <div v-for="item of cart" :key="item.id" class="item">
@@ -25,10 +32,10 @@
           <span class="font__h6">$ {{ numberWithCommas(cartTotal) }}</span>
         </div>
         <div class="cart__empty" v-if="cart.length === 0">
-          <h6 class="font__body cart__empty-text">Your cart is empty</h6>
+          <h6 class="font__body cart__empty-text">Your cart is currently empty</h6>
         </div>
       </div>
-      <div class="cart__btn">
+      <div class="cart__btn" v-if="cart.length > 0">
         <ButtonAction text="Checkout" variant="primary" :fullWidth="true" path="/checkout" />
       </div>
     </div>
@@ -83,6 +90,12 @@ const onRemoveAll = () => {
   cursor: pointer;
   padding: 0;
   opacity: 0.5;
+}
+
+.btn__remove:hover {
+  color: #d87d4a;
+  text-decoration-line: underline;
+  opacity: 1;
 }
 
 .cart__products {

@@ -10,9 +10,9 @@ import type { Router } from 'vue-router'
 const toastOptions = {
   onMounted: (_: any, toastApp: { use: (arg0: Router) => void }) => {
     // Register the router
-    toastApp.use(router);
-  },
-};
+    toastApp.use(router)
+  }
+}
 
 const app = createApp(App)
 

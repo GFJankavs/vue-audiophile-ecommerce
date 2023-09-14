@@ -1,4 +1,5 @@
 import { defineStore } from 'pinia'
+import { useStorage } from '@vueuse/core'
 
 interface CartItem {
   id: number
@@ -16,7 +17,7 @@ const basicState = { cart: [] }
 
 export const useCartStore = defineStore('cart', {
   state: (): ICartState => ({
-    cart: []
+    cart: useStorage('audiophile_cart', basicState.cart)
   }),
   actions: {
     addToCart(item: CartItem) {

@@ -1,8 +1,14 @@
 <template>
   <Teleport to="body">
     <Transition name="modal-fade" :persisted="false">
-      <div class="modal-wrapper" @click.self="store.closeModal" v-if="store.modalState.component" aria-modal="true"
-        role="dialog" tabindex="-1">
+      <div
+        class="modal-wrapper"
+        @click.self="store.closeModal"
+        v-if="store.modalState.component"
+        aria-modal="true"
+        role="dialog"
+        tabindex="-1"
+      >
         <div class="container modal__container" @click.self="store.closeModal">
           <component :is="store.modalState?.component" v-bind="store.modalState?.props" />
         </div>

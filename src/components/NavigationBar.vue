@@ -2,7 +2,7 @@
 import { ref } from 'vue'
 import ModalHamburger from './modal/hamburger/ModalHamburger.vue'
 import useModalStore from '@/stores/useModalStore'
-import CartModal from './modal/cart/CartModal.vue';
+import CartModal from './modal/cart/CartModal.vue'
 
 const store = useModalStore()
 

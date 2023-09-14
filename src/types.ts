@@ -38,21 +38,21 @@ export interface Other {
 }
 
 export interface CheckoutFormData {
-  name: string,
-  email: string,
-  phone: string,
-  address: string,
-  zip: string,
-  city: string,
-  country: { name: string, code: string },
-  payment: 'money' | 'cash',
+  name: string
+  email: string
+  phone: string
+  address: string
+  zip: string
+  city: string
+  country: { name: string; code: string }
+  payment: 'money' | 'cash'
   eMoney: {
-    number: string;
-    pin: string;
+    number: string
+    pin: string
   }
 }
 
 export interface Country {
-  name: string,
+  name: string
   code: string
 }
