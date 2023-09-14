@@ -13,6 +13,8 @@ import { RouterView } from 'vue-router'
 import ModalWindow from './components/modal/ModalWindow.vue'
 import useModalStore from './stores/useModalStore'
 
+console.log(import.meta.env.BASE_URL)
+
 export default defineComponent({
   name: 'App',
   components: {

@@ -108,6 +108,7 @@ import { useCartStore } from '@/stores/useCartStore'
 import type { AudiophileData } from '@/types'
 import { defineComponent } from 'vue'
 import { useToast } from 'vue-toastification'
+import ProductsData from '@/data/data.json'
 
 const store = useCartStore()
 
@@ -135,10 +136,12 @@ export default defineComponent({
     goBack() {
       router.go(-1)
     },
-    async getProductData(productParam: string | string[]) {
+    getProductData(productParam: string | string[]) {
       if (Array.isArray(productParam)) return
-      const response = await fetch('/src/data/data.json').then((res) => res.json())
-      const product = response.find((product: AudiophileData) => product.slug === productParam)
+      const product = (ProductsData as AudiophileData[]).find(
+        (product: AudiophileData) => product.slug === productParam
+      )
+      if (!product) return
       this.product = product
     },
     numberWithCommas(x: number) {
@@ -173,10 +176,10 @@ export default defineComponent({
     }
   },
   async created() {
-    await this.getProductData(this.$route.params.product)
+    this.getProductData(this.$route.params.product)
   },
   async updated() {
-    await this.getProductData(this.$route.params.product)
+    this.getProductData(this.$route.params.product)
   },
   computed: {
     featuresParagraphs() {
