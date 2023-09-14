@@ -117,6 +117,7 @@ const productsToDisplay = computed(() => {
 
 .success__products {
   background-color: #f1f1f1;
+  border-radius: 8px;
 }
 
 .products__top {
@@ -215,6 +216,7 @@ const productsToDisplay = computed(() => {
   }
 
   .success__container {
+    width: 100%;
     max-width: 540px;
   }
 
