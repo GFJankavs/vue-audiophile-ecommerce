@@ -65,6 +65,7 @@ export default defineComponent({
   },
   async mounted() {
     await this.prepareProductData(this.$route.params.category)
+    document.title = `Audiophile | ${this.title}`
   }
 })
 </script>

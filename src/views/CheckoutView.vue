@@ -249,10 +249,10 @@ import * as EmailValidator from 'email-validator'
 import ButtonAction from '@/components/ButtonAction.vue'
 import CheckoutModal from '@/components/modal/checkout/CheckoutModal.vue'
 import { checkIfEveryInputFilled, formatName, numberWithCommas } from '@/helpers'
-import { type CheckoutFormData, type Country } from '@/types'
+import { type CheckoutFormData } from '@/types'
 import router from '@/router'
 import { useCartStore } from '@/stores/useCartStore'
-import { onMounted, ref, watch } from 'vue'
+import { ref, watch, onMounted } from 'vue'
 import { countries } from '@/data/countries'
 import SearchAutocomplete from '@/components/SearchAutocomplete.vue'
 import CheckoutRadioInput from '@/components/CheckoutRadioInput.vue'
@@ -360,6 +360,12 @@ const error = ref<{ input: string; msg: string } | null>(null)
 watch(formData, (value) => {
   console.log(value)
 })
+
+onMounted(() => {
+  document.title = 'Audiophile - Checkout'
+})
+
+onMounted
 </script>
 
 <style scoped>

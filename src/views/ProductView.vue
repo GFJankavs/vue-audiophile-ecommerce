@@ -175,9 +175,11 @@ export default defineComponent({
   },
   async created() {
     await this.getProductData(this.$route.params.product)
+    document.title = `Audiophile - ${this.product.name}`
   },
   async updated() {
     await this.getProductData(this.$route.params.product)
+    document.title = `Audiophile - ${this.product.name}`
   },
   computed: {
     featuresParagraphs() {
