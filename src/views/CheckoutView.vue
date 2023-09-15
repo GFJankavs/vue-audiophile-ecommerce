@@ -356,10 +356,6 @@ const formData = ref<CheckoutFormData>({
 })
 
 const error = ref<{ input: string; msg: string } | null>(null)
-
-watch(formData, (value) => {
-  console.log(value)
-})
 </script>
 
 <style scoped>

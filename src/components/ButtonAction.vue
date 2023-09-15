@@ -60,7 +60,6 @@ export default defineComponent({
   },
   methods: {
     onClick() {
-      console.log('Clicked')
       this.$emit('click:btn')
     }
   },

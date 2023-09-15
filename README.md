@@ -14,7 +14,6 @@ This is a solution to the [Audiophile e-commerce website challenge on Frontend M
   - [Continued development](#continued-development)
   - [Useful resources](#useful-resources)
 - [Author](#author)
-- [Acknowledgments](#acknowledgments)
 
 **Note: Delete this note and update the table of contents based on what sections you keep.**
 
@@ -34,24 +33,26 @@ Users should be able to:
   - Shipping always adds $50 to the order
   - VAT is calculated as 20% of the product total, excluding shipping
 - See an order confirmation modal after checking out with an order summary
-- **Bonus**: Keep track of what's in the cart, even after refreshing the browser (`localStorage` could be used for this if you're not building out a full-stack app)
+- Keep track of what's in the cart, even after refreshing the browser (`localStorage` could be used for this if you're not building out a full-stack app)
 
 ### Screenshot
 
-![](./screenshot.jpg)
+![Homepage](./screenshots/home.png)
 
-Add a screenshot of your solution. The easiest way to do this is to use Firefox to view your project, right-click the page and select "Take a Screenshot". You can choose either a full-height screenshot or a cropped one based on how long the page is. If it's very long, it might be best to crop it.
+![Category View](./screenshots/category.png)
 
-Alternatively, you can use a tool like [FireShot](https://getfireshot.com/) to take the screenshot. FireShot has a free option, so you don't need to purchase it.
+![Product View](./screenshots/product.png)
 
-Then crop/optimize/edit your image however you like, add it to your project, and update the file path in the image above.
+![Cart](./screenshots/cart.png)
 
-**Note: Delete this note and the paragraphs above when you add your screenshot. If you prefer not to add a screenshot, feel free to remove this entire section.**
+![Checkout - Form](./screenshots/checkout_form.png)
+
+![Checkout - Success](./screenshots/checkout__success.png)
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+- Solution URL: [https://github.com/GFJankavs/vue-audiophile-ecommerce](https://github.com/GFJankavs/vue-audiophile-ecommerce)
+- Live Site URL: [https://gfjankavs.github.io/vue-audiophile-ecommerce/](https://gfjankavs.github.io/vue-audiophile-ecommerce/)
 
 ## My process
 
@@ -62,65 +63,41 @@ Then crop/optimize/edit your image however you like, add it to your project, and
 - Flexbox
 - CSS Grid
 - Mobile-first workflow
-- [React](https://reactjs.org/) - JS library
-- [Next.js](https://nextjs.org/) - React framework
-- [Styled Components](https://styled-components.com/) - For styles
-- [Vue Toastification](https://github.com/Maronato/vue-toastification) -
-- [email-validator](https://github.com/manishsaraan/email-validator) -
-
-**Note: These are just examples. Delete this note and replace the list above with your own choices**
+- [Vue 3](https://reactjs.org/) - Progressive JavaScript Framework
+- [Vue Router](https://router.vuejs.org/) - Expressive, configurable and convenient routing for Vue.js
+- [Pinia](https://pinia.vuejs.org/) - global state management library for Vue
+- [VueUse](https://vueuse.org/) - Collection of Essential Vue Composition Utilities
+- [Vue Toastification](https://github.com/Maronato/vue-toastification) - Toast notifications for Vue
+- [email-validator](https://github.com/manishsaraan/email-validator) - JS module to validate an e-mail address
+- [libphonenumber-js](https://www.npmjs.com/package/libphonenumber-js) -
 
 ### What I learned
 
-Use this section to recap over some of your major learnings while working through this project. Writing these out and providing code samples of areas you want to highlight is a great way to reinforce your own knowledge.
+This was my second project that I had made with VueJS in some time. This was a bigger project than the previous one because here I had to also use routing and global state management that needs to be shared between multiple views. Although I have been acustomed to syntax for this framework, this project was great practice for becoming more proficient in VueJS.
 
-To see how you can add code snippets, see below:
+I learned how to use VueJS native components `<Teleport/>` and `<Transition/>` which are not common in React. The closest of either of these two things that I had worked with similarly is React Portal (similar to `<Teleport/>`). I had a chance to use both Options API and Composition API when creating components for this project. I saw pros and cons when using them both which provided a better understanding when and how to use both of these approaches.
 
-```html
-<h1>Some HTML code I'm proud of</h1>
-```
+I was working a lot with CSS Grid in this project. What I learned was about `grid-template-areas` and `grid-areas` properties as they were quite useful when creating such grid that I needed. It was something that I had read and learned prior to this project but not yet put to practice so extensively.
 
-```css
-.proud-of-this-css {
-  color: papayawhip;
-}
-```
-
-```js
-const proudOfThisFunc = () => {
-  console.log('🎉')
-}
-```
-
-If you want more help with writing markdown, we'd recommend checking out [The Markdown Guide](https://www.markdownguide.org/) to learn more.
-
-**Note: Delete this note and the content within this section and replace with your own learnings.**
+I remember my mentors telling me that developers should have "mobile-first" mindset when developing components/website. While working on this project, I realised how difficult it would have been if I did it the other way around as this mindset allows you to add more code and remove less much easier and helps you prepare for unexpected hurdles during development.
 
 ### Continued development
 
-Use this section to outline areas that you want to continue focusing on in future projects. These could be concepts you're still not completely comfortable with or techniques you found useful that you want to refine and perfect.
+There is a list of things that I could do to improve this project:
 
-**Note: Delete this note and the content within this section and replace with your own plans for continued development.**
+- **Project structure** - So far all the components are in a folder called `components`. There is no distinction between shared and specialised components within this folder. I could restructure it as to provide more clarity on how these components are used.
+- **Implementation of slots** - When initially working on this project I had thought of using `<slot/>` to improve general usage of components. Knowing all the components use cases and how they are going to be utilised stopped me from investing more time in creating such components, it would be a good practice to modify them as such components are more useful in large projects with hundreds of components.
+- **Additional form autocomplete features** - So far only when selecting country the user is provided with autocomplete feature. This feature could be extended also for other inputs like `address` and `city`. Additionaly, there could be some more validation added for other inputs ,like, `e-Money Number`.
+- **Cleanup on CSS** - I have noticed that there are some CSS styles that have same implementation but under different classes. This styling could be turned into general usage classes or even turned into components that can be reusable.
 
 ### Useful resources
 
-- [Hamburger Menu](https://codepen.io/ysk2645/pen/wvBabpe) - .
-- [Reusable modal component in Vue](https://itnext.io/how-to-build-a-reusable-modal-component-in-vuejs-f1799ab9b3e) - This is an amazing article which helped me finally understand XYZ. I'd recommend it to anyone still learning this concept.
-- [Vue Toastification + Vue Router](https://github.com/Maronato/vue-toastification/issues/162) -
-- [Custom Autocomplete input](https://www.digitalocean.com/community/tutorials/vuejs-vue-autocomplete-component) -
-
-**Note: Delete this note and replace the list above with resources that helped you during the challenge. These could come in handy for anyone viewing your solution or for yourself when you look back on this project in the future.**
+- [Reusable modal component in Vue](https://itnext.io/how-to-build-a-reusable-modal-component-in-vuejs-f1799ab9b3e) - This article helped to create a reusable modal for any kind of component I need. It would have been a bigger struggle without it.
+- [Vue Toastification + Vue Router](https://github.com/Maronato/vue-toastification/issues/162) - There was an issue where for some reason Vue Toastification would not work properly if `<RouterLink/>` was within a toast notification. This article helped solve this issue.
+- [Custom Autocomplete input](https://www.digitalocean.com/community/tutorials/vuejs-vue-autocomplete-component) - I wanted to have autocomplete for country input as based on this input would rely validation for phone number. The creation process is well documented and explained.
 
 ## Author
 
-- Website - [Add your name here](https://www.your-site.com)
-- Frontend Mentor - [@yourusername](https://www.frontendmentor.io/profile/yourusername)
-- Twitter - [@yourusername](https://www.twitter.com/yourusername)
-
-**Note: Delete this note and add/remove/edit lines above based on what links you'd like to share.**
-
-## Acknowledgments
-
-This is where you can give a hat tip to anyone who helped you out on this project. Perhaps you worked in a team or got some inspiration from someone else's solution. This is the perfect place to give them some credit.
-
-**Note: Delete this note and edit this section's content as necessary. If you completed this challenge by yourself, feel free to delete this section entirely.**
+- Website - [GFJankavs](https://www.gfjankavs.lv)
+- Frontend Mentor - [@yourusername](https://www.frontendmentor.io/profile/GFJankavs)
+- LinkedIn - [Gustavs Fricis Jankavs](https://www.linkedin.com/in/gustavs-fricis-jankavs/)
